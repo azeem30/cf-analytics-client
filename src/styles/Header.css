@@ -7,17 +7,20 @@
 }
 
 #header {
-    height: 20px;
+    min-height: 60px; 
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
+    padding: clamp(15px, 4vw, 20px) clamp(20px, 5vw, 40px);
     background: linear-gradient(135deg, #faf9ee 0%, #fcf8dd 50%, #f8f6e6 100%);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
     font-family: 'Rubik';
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     position: relative;
     overflow: hidden;
+    flex-wrap: wrap;
+    gap: 15px; 
 }
 
 #header::before {
@@ -32,16 +35,17 @@
 
 .label {
     margin: 0;
-    font-size: 16px;
+    font-size: clamp(14px, 3.5vw, 16px); 
     color: #1a3c34;
     font-weight: 500;
     letter-spacing: 0.3px;
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    white-space: nowrap; 
 }
 
 .data {
     font-weight: 600;
-    padding: 6px 12px;
+    padding: clamp(4px, 1.5vw, 6px) clamp(8px, 2.5vw, 12px); 
     border-radius: 8px;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     cursor: pointer;
@@ -52,6 +56,10 @@
     position: relative;
     overflow: hidden;
     text-decoration: none;
+    font-size: clamp(13px, 3vw, 15px); 
+    white-space: nowrap;
+    text-align: center;
+    min-width: fit-content;
 }
 
 .data::before {
@@ -66,10 +74,11 @@
 }
 
 #logo {
-    width: 100px;
-    height: fit-content;
+    width: clamp(80px, 20vw, 100px); 
+    height: auto; 
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
 #logo:hover {
@@ -86,4 +95,147 @@
 
 .data:hover::before {
     left: 100%;
+}
+
+@media (max-width: 768px) {
+    #header {
+        flex-direction: row; 
+        justify-content: space-between;
+        padding: 12px 15px;
+        min-height: 50px;
+        gap: 10px;
+    }
+
+    @media (max-width: 480px) {
+        #header {
+            flex-wrap: nowrap; 
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .label {
+            font-size: 13px;
+            letter-spacing: 0.2px;
+        }
+
+        .data {
+            padding: 6px 10px;
+            font-size: 12px;
+        }
+
+        #logo {
+            width: 70px;
+        }
+    }
+
+    @media (max-width: 360px) {
+        #header {
+            padding: 10px 12px;
+            gap: 8px;
+        }
+
+        .label {
+            font-size: 12px;
+        }
+
+        .data {
+            padding: 5px 8px;
+            font-size: 11px;
+        }
+
+        #logo {
+            width: 60px;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    #header {
+        padding: 20px 50px;
+    }
+
+    .label {
+        font-size: 17px;
+    }
+
+    .data {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    #logo {
+        width: 110px;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .data:hover {
+        transform: none;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+        color: #1a3c34;
+        box-shadow: none;
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .data:active {
+        color: #ffffff;
+        background: linear-gradient(135deg, #1a3c34, #2d5c4f);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 15px rgba(26, 60, 52, 0.3);
+    }
+
+    #logo:hover {
+        transform: none;
+    }
+    
+    #logo:active {
+        transform: scale(1.05);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #header::before,
+    .data::before,
+    .data,
+    #logo {
+        transition: none;
+        animation: none;
+    }
+    
+    .data:hover::before {
+        left: -100%;
+    }
+}
+
+.data {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#header > * {
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+    #header {
+        min-height: 55px;
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    #header {
+        min-height: 45px;
+        padding: 10px 15px;
+    }
+    
+    .label {
+        font-size: 13px;
+    }
+    
+    .data {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
 }

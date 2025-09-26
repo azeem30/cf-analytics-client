@@ -5,3 +5,12 @@
     margin: 0 auto;
     padding: 20px;
 }
+
+@media (max-width: 768px) {
+    .bar-chart-container {
+        height: clamp(250px, 45vh, 350px); 
+        padding: clamp(10px, 2vw, 15px);
+        margin: 0 clamp(10px, 3vw, 20px); 
+        max-width: calc(100% - 20px); 
+    }
+}

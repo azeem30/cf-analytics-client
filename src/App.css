@@ -12,12 +12,10 @@
     100% { background-position: 0% 50%; }
 }
 
-
 @keyframes pulse {
     0%, 100% { opacity: 0.8; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.02); }
 }
-
 
 @keyframes errorEntrance {
     from {
@@ -35,43 +33,74 @@
     100% { left: 100%; }
 }
 
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
 #content {
-    width: inherit;
-    height: 840px;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
     background: linear-gradient(-45deg, #FAFDD6, #F8FAB4, #E8F4F8, #D4E7FF);
     background-size: 400% 400%;
     animation: gradientShift 8s ease infinite;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 #loading-message {
     font-family: "Rubik";
-    font-size: 24px;
+    font-size: clamp(18px, 5vw, 24px); 
     font-weight: normal;
     color: #1a3c34;
     text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
     animation: pulse 2s ease-in-out infinite;
+    text-align: center;
+    margin: 2rem 0;
+    padding: 0 1rem;
 }
 
 .daily-stats-container {
     display: flex;
-    gap: 3rem;
-    margin: 1.5rem 0 2rem 0;
+    gap: 1.5rem;
+    margin: 1rem 0 1.5rem 0;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 1rem;
 }
 
 .daily-stats-label {
     font-family: "Rubik";
-    font-size: 20px;
+    font-size: clamp(16px, 4vw, 20px); 
     font-weight: 500;
     color: #1a3c34;
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
     letter-spacing: 0.3px;
     margin: 0;
-    padding: 15px 25px;
+    padding: clamp(12px, 3vw, 15px) clamp(20px, 4vw, 25px); 
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
     backdrop-filter: blur(10px);
     border-radius: 15px;
@@ -81,6 +110,11 @@
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+    max-width: 400px;
+    box-sizing: border-box;
 }
 
 .daily-stats-label::before {
@@ -110,13 +144,13 @@
 
 .daily-stats-data {
     font-family: "Rubik";
-    font-size: 22px;
+    font-size: clamp(18px, 4vw, 22px); /* Responsive font size */
     font-weight: 700;
     color: #1a3c34;
     background: linear-gradient(135deg, #d4e157, #c0ca33);
-    padding: 4px 12px;
+    padding: clamp(3px, 1vw, 4px) clamp(10px, 2vw, 12px);
     border-radius: 8px;
-    margin-left: 8px;
+    margin-left: 6px;
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
     box-shadow: 0 4px 15px rgba(212, 225, 87, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.4);
@@ -151,15 +185,17 @@
         rgba(255, 235, 235, 0.7));
     backdrop-filter: blur(20px);
     border-radius: 20px;
-    padding: 3rem 2.5rem;
+    padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
     border: 1px solid rgba(255, 200, 200, 0.4);
     box-shadow: 0 15px 40px rgba(255, 100, 100, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.6);
-    max-width: 500px;
-    width: 90%;
+    max-width: 90%;
+    width: 100%;
     animation: errorEntrance 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
+    margin: 1rem;
+    box-sizing: border-box;
 }
 
 .error-container::before {
@@ -177,7 +213,7 @@
 }
 
 .error-icon {
-    font-size: 4rem;
+    font-size: clamp(3rem, 10vw, 4rem);
     margin-bottom: 1rem;
     animation: float 3s ease-in-out infinite;
     filter: drop-shadow(0 4px 8px rgba(255, 100, 100, 0.3));
@@ -185,16 +221,17 @@
 
 .error-title {
     font-family: "Rubik";
-    font-size: 28px;
+    font-size: clamp(22px, 6vw, 28px);
     font-weight: 700;
     color: #d32f2f;
     margin: 0 0 1rem 0;
     text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+    line-height: 1.3;
 }
 
 .error-message {
     font-family: "Rubik";
-    font-size: 18px;
+    font-size: clamp(16px, 4vw, 18px);
     color: #5d4037;
     margin: 0 0 2rem 0;
     line-height: 1.5;
@@ -202,15 +239,17 @@
     padding: 1rem;
     border-radius: 10px;
     border-left: 4px solid #ff7043;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .retry-button {
     font-family: "Rubik";
-    font-size: 18px;
+    font-size: clamp(16px, 4vw, 18px);
     font-weight: 600;
     color: white;
     background: linear-gradient(135deg, #ff7043, #f4511e);
-    padding: 12px 30px;
+    padding: clamp(10px, 3vw, 12px) clamp(25px, 5vw, 30px);
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -218,6 +257,8 @@
     box-shadow: 0 6px 20px rgba(244, 81, 30, 0.3);
     position: relative;
     overflow: hidden;
+    min-width: 140px;
+    width: auto;
 }
 
 .retry-button::before {
@@ -249,44 +290,111 @@
     box-shadow: 0 4px 15px rgba(244, 81, 30, 0.3);
 }
 
-/* Error animation when it appears */
 .error-container {
     animation: errorEntrance 0.6s ease-out, shake 0.5s ease-in-out;
 }
 
-
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 @media (max-width: 768px) {
+    #content {
+        padding: 0.5rem;
+        min-height: 100vh;
+    }
+
     .daily-stats-container {
         flex-direction: column;
         gap: 1rem;
         align-items: center;
+        padding: 0 0.5rem;
+        margin: 0.5rem 0 1rem 0;
+    }
+
+    .daily-stats-label {
+        font-size: 16px;
+        padding: 1rem 1.5rem;
+        text-align: center;
+        min-width: unset;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .daily-stats-data {
+        font-size: 18px;
+        padding: 2px 8px;
+        margin-left: 4px;
+    }
+
+    .error-container {
+        margin: 0.5rem;
+        padding: 1.5rem 1rem;
+        border-radius: 15px;
+    }
+
+    .error-message {
+        padding: 0.8rem;
+        font-size: 15px;
+    }
+
+    .retry-button {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .daily-stats-label {
+        max-width: 100%;
+        padding: 0.8rem 1rem;
+    }
+
+    .error-container {
+        padding: 1rem 0.8rem;
+    }
+
+    .error-message {
+        padding: 0.6rem;
+        font-size: 14px;
+    }
+
+    .retry-button {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .daily-stats-container {
+        max-width: 1400px;
+        gap: 2rem;
     }
     
     .daily-stats-label {
-        font-size: 18px;
-        padding: 12px 20px;
-        text-align: center;
+        min-width: 280px;
+    }
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .daily-stats-label:hover {
+        transform: none;
     }
     
-    .daily-stats-data {
-        font-size: 20px;
-        padding: 3px 10px;
+    .daily-stats-label:hover .daily-stats-data {
+        transform: none;
     }
     
-    #content {
-        padding: 1rem;
-        height: auto;
-        min-height: 840px;
+    .retry-button:hover {
+        transform: none;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
     }
 }
