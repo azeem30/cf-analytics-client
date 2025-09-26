@@ -13,7 +13,7 @@ function App() {
   const myUsername = "azeem";
   const myrank = "pupil";
   const color = rankToColorMap[myrank];
-  const url = `${process.env.REACT_APP_API_URL}/api/`;
+  const url = `https://cf-analytics-server.onrender.com/api/`;
 
   useEffect(() => {
     const abortController = new AbortController();
