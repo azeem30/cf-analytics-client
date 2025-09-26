@@ -1,0 +1,176 @@
+@font-face {
+    font-family: 'Rubik';
+    src: url('../assets/fonts/Rubik/Rubik-VariableFont_wght.ttf') format('truetype'),
+         url('../assets/fonts/Rubik/Rubik-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+.stats-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 85%;
+    height: 30%;
+    margin-top: 2rem;
+    background: linear-gradient(145deg, #f0f4c3, #e8edb7);
+    font-family: 'Rubik', sans-serif;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 
+                0 2px 8px rgba(0, 0, 0, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.stats-table::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.8), 
+        transparent);
+}
+
+.header-row {
+    background: linear-gradient(135deg, #d4e157, #c0ca33);
+    position: relative;
+}
+
+.header-row::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 90%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.6), 
+        transparent);
+}
+
+.header-cell {
+    text-align: center;
+    font-family: 'Rubik';
+    font-size: 16px;
+    color: #1a3c34;
+    font-weight: 600;
+    padding: 20px 15px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    position: relative;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-cell:hover {
+    background: linear-gradient(135deg, #c0ca33, #afb42b);
+    transform: translateY(-1px);
+}
+
+.data-row {
+    background: linear-gradient(135deg, #f4ff81, #eeff8d);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.data-row:hover {
+    background: linear-gradient(135deg, #eeff8d, #e6ff80);
+    transform: translateX(8px);
+    box-shadow: -4px 0 15px rgba(212, 225, 87, 0.3);
+}
+
+.data-row:nth-child(even) {
+    background: linear-gradient(135deg, #e6ee9c, #dce775);
+}
+
+.data-row:nth-child(even):hover {
+    background: linear-gradient(135deg, #dce775, #d4e157);
+}
+
+.data-row:last-child {
+    font-weight: 700;
+    background: linear-gradient(135deg, #cddc39, #c0ca33);
+    border-top: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.data-row:last-child:hover {
+    background: linear-gradient(135deg, #c0ca33, #afb42b);
+    transform: scale(1.02);
+}
+
+.data-cell {
+    text-align: center;
+    font-family: 'Rubik';
+    font-size: 14px;
+    color: #1a3c34;
+    padding: 18px 15px;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.data-cell:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background: linear-gradient(180deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.6), 
+        transparent);
+}
+
+.no-data {
+    text-align: center;
+    color: #1a3c34;
+    font-size: 18px;
+    font-family: 'Rubik';
+    margin: 30px 0;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.stats-table {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-table {
+        width: 95%;
+        margin-top: 1rem;
+    }
+    
+    .header-cell {
+        font-size: 18px;
+        padding: 15px 10px;
+    }
+    
+    .data-cell {
+        font-size: 16px;
+        padding: 15px 10px;
+    }
+}
