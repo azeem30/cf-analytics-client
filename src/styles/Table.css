@@ -1,176 +1,127 @@
-@font-face {
-    font-family: 'Rubik';
-    src: url('../assets/fonts/Rubik/Rubik-VariableFont_wght.ttf') format('truetype'),
-         url('../assets/fonts/Rubik/Rubik-Italic-VariableFont_wght.ttf') format('truetype');
-    font-weight: 100 900;
-    font-style: normal;
-}
-
 .stats-table {
-    border-collapse: separate;
-    border-spacing: 0;
-    width: 85%;
-    height: 30%;
-    margin-top: 2rem;
-    background: linear-gradient(145deg, #f0f4c3, #e8edb7);
-    font-family: 'Rubik', sans-serif;
-    border-radius: 16px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 
-                0 2px 8px rgba(0, 0, 0, 0.05),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    position: relative;
-}
-
-.stats-table::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.8), 
-        transparent);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 2rem 0;
+    border-collapse: collapse;
 }
 
 .header-row {
-    background: linear-gradient(135deg, #d4e157, #c0ca33);
-    position: relative;
-}
-
-.header-row::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 5%;
-    width: 90%;
-    height: 1px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.6), 
-        transparent);
+    background: linear-gradient(135deg, #667eea, #764ba2);
 }
 
 .header-cell {
+    padding: 1.2rem 1rem;
     text-align: center;
-    font-family: 'Rubik';
-    font-size: 16px;
-    color: #1a3c34;
-    font-weight: 600;
-    padding: 20px 15px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
     letter-spacing: 0.5px;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
     position: relative;
-    transition: all 0.3s ease;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
 }
 
-.header-cell:hover {
-    background: linear-gradient(135deg, #c0ca33, #afb42b);
-    transform: translateY(-1px);
+.header-cell:last-child {
+    border-right: none;
+}
+
+.header-cell::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.8);
+    transition: width 0.3s ease;
+}
+
+.header-cell:hover::after {
+    width: 80%;
 }
 
 .data-row {
-    background: linear-gradient(135deg, #f4ff81, #eeff8d);
     transition: all 0.3s ease;
-    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .data-row:hover {
-    background: linear-gradient(135deg, #eeff8d, #e6ff80);
-    transform: translateX(8px);
-    box-shadow: -4px 0 15px rgba(212, 225, 87, 0.3);
+    background: rgba(102, 126, 234, 0.1);
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .data-row:nth-child(even) {
-    background: linear-gradient(135deg, #e6ee9c, #dce775);
+    background: rgba(0, 0, 0, 0.02);
 }
 
 .data-row:nth-child(even):hover {
-    background: linear-gradient(135deg, #dce775, #d4e157);
-}
-
-.data-row:last-child {
-    font-weight: 700;
-    background: linear-gradient(135deg, #cddc39, #c0ca33);
-    border-top: 2px solid rgba(255, 255, 255, 0.4);
-}
-
-.data-row:last-child:hover {
-    background: linear-gradient(135deg, #c0ca33, #afb42b);
-    transform: scale(1.02);
+    background: rgba(102, 126, 234, 0.15);
 }
 
 .data-cell {
+    padding: 1rem;
     text-align: center;
-    font-family: 'Rubik';
-    font-size: 14px;
-    color: #1a3c34;
-    padding: 18px 15px;
+    font-weight: 500;
+    color: #333;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    position: relative;
 }
 
-.data-cell:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 15%;
-    height: 70%;
-    width: 1px;
-    background: linear-gradient(180deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.6), 
-        transparent);
+.data-cell:first-child {
+    font-weight: 700;
+    color: #667eea;
+    font-size: 1.1rem;
+}
+
+.data-cell:last-child {
+    border-right: none;
 }
 
 .no-data {
     text-align: center;
-    color: #1a3c34;
-    font-size: 18px;
-    font-family: 'Rubik';
-    margin: 30px 0;
-    padding: 40px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.stats-table {
-    animation: fadeInUp 0.8s ease-out;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    font-size: 1.2rem;
+    color: #666;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    margin: 2rem 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
     .stats-table {
-        width: 95%;
-        margin-top: 1rem;
+        font-size: 0.9rem;
     }
-    
+
     .header-cell {
-        font-size: 18px;
-        padding: 15px 10px;
+        padding: 0.8rem 0.5rem;
+        font-size: 0.9rem;
     }
-    
+
     .data-cell {
-        font-size: 16px;
-        padding: 15px 10px;
+        padding: 0.8rem 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-table {
+        font-size: 0.8rem;
+    }
+
+    .header-cell {
+        padding: 0.6rem 0.3rem;
+        font-size: 0.8rem;
+    }
+
+    .data-cell {
+        padding: 0.6rem 0.3rem;
     }
 }
